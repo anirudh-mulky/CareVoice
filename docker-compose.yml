@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PROVIDER_MODE=${PROVIDER_MODE:-demo} # works with no .env file
+    volumes:
+      - carevoice-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  carevoice-data:
