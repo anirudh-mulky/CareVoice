@@ -1,0 +1,18 @@
+[
+  {
+    "key": "user:dr-priya",
+    "hospital": "hospital:demo",
+    "name": "Dr. Priya",
+    "role": "doctor",
+    "phone": "+91 90000 00001",
+    "email": "priya@example.com"
+  },
+  {
+    "key": "user:nurse-anita",
+    "hospital": "hospital:demo",
+    "name": "Anita",
+    "role": "nurse",
+    "phone": "+91 90000 00002",
+    "email": "anita@example.com"
+  }
+]

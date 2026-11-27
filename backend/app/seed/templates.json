@@ -1,0 +1,258 @@
+[
+  {
+    "key": "template:cataract",
+    "version": 1,
+    "hospital": "hospital:demo",
+    "doctor": "user:dr-priya",
+    "name": "Cataract surgery",
+    "condition": "cataract",
+    "follow_up_day": 7,
+    "medicines": [
+      { "name": "Moxifloxacin 0.5% eye drops", "dose": "1 drop", "frequency": "4 times a day", "duration_days": 7 },
+      { "name": "Prednisolone acetate 1% eye drops", "dose": "1 drop", "frequency": "4 times a day, then as the doctor reduces it", "duration_days": 28 },
+      { "name": "Lubricating eye drops", "dose": "1 drop", "frequency": "when needed", "duration_days": 30 }
+    ],
+    "dos": [
+      "Wear the eye shield while sleeping for 1 week",
+      "Wash your hands, then put the eye drops as prescribed",
+      "Wear dark glasses when you go outside"
+    ],
+    "donts": [
+      "Do not rub or press the operated eye",
+      "Do not let water or soap into the eye for 1 week",
+      "Do not bend down or lift heavy things for 2 weeks",
+      "No eye make-up or swimming for 2 weeks"
+    ],
+    "red_flags": [
+      {
+        "id": "rf_vision_loss",
+        "label_en": "Sudden drop or loss of vision",
+        "keywords": {
+          "en": ["can't see", "cannot see", "vision gone", "lost vision", "blurred vision", "everything dark"],
+          "kn": ["kaanisuttilla", "ಕಾಣಿಸುತ್ತಿಲ್ಲ", "kannu kaanta illa", "mabbu", "ಮಬ್ಬು"],
+          "hi": ["dikh nahi raha", "दिख नहीं रहा", "dhundla", "धुंधला", "andhera", "अंधेरा"],
+          "ta": ["theriyala", "தெரியல", "kan theriyavillai", "கண் தெரியவில்லை", "mangalaaga", "மங்கலாக"]
+        }
+      },
+      {
+        "id": "rf_eye_pain",
+        "label_en": "Increasing eye pain that painkillers do not relieve",
+        "keywords": {
+          "en": ["pain", "hurts", "aching", "eye pain"],
+          "kn": ["novu", "ನೋವು"],
+          "hi": ["dard", "दर्द"],
+          "ta": ["vali", "வலி", "valikkuthu", "வலிக்குது"]
+        }
+      },
+      {
+        "id": "rf_redness",
+        "label_en": "Increasing redness of the eye",
+        "keywords": {
+          "en": ["red", "redness", "bloodshot"],
+          "kn": ["kempu", "ಕೆಂಪು", "kempagide", "ಕೆಂಪಾಗಿದೆ"],
+          "hi": ["laal", "लाल"],
+          "ta": ["sivappu", "சிவப்பு", "sivappa", "சிவப்பா"]
+        }
+      },
+      {
+        "id": "rf_discharge",
+        "label_en": "Pus or sticky discharge from the eye",
+        "keywords": {
+          "en": ["pus", "discharge", "sticky"],
+          "kn": ["keevu", "ಕೀವು", "antu", "ಅಂಟು"],
+          "hi": ["mawad", "मवाद", "pus", "chipchipa", "चिपचिपा"],
+          "ta": ["seel", "சீழ்", "pisupisuppu", "பிசுபிசுப்பு"]
+        }
+      },
+      {
+        "id": "rf_flashes",
+        "label_en": "Flashes of light, new floaters or a curtain over the vision",
+        "keywords": {
+          "en": ["flashes", "floaters", "curtain", "black spots"],
+          "kn": ["minchu", "ಮಿಂಚು", "chukke", "ಚುಕ್ಕೆ", "parade", "ಪರದೆ"],
+          "hi": ["chamak", "चमक", "dhabbe", "धब्बे", "parda", "पर्दा"],
+          "ta": ["minnal", "மின்னல்", "pulli", "புள்ளி", "thirai", "திரை"]
+        }
+      },
+      {
+        "id": "rf_vomiting",
+        "label_en": "Nausea or vomiting with eye pain",
+        "keywords": {
+          "en": ["vomit", "vomiting", "nausea", "throwing up"],
+          "kn": ["vaanti", "ವಾಂತಿ", "vaakarike", "ವಾಕರಿಕೆ"],
+          "hi": ["ulti", "उल्टी", "ji machlana", "जी मचलाना"],
+          "ta": ["vaanthi", "வாந்தி", "kumattal", "குமட்டல்"]
+        }
+      }
+    ],
+    "minor_symptoms": [
+      {
+        "id": "ms_itching",
+        "symptom_en": "Mild itching or a gritty feeling",
+        "remedy_en": "Mild itching is common while the eye heals. Use the lubricating drops as prescribed. Do not rub the eye.",
+        "keywords": {
+          "en": ["itch", "itching", "gritty", "sandy"],
+          "kn": ["turike", "ತುರಿಕೆ", "maralu", "ಮರಳು"],
+          "hi": ["khujli", "खुजली", "kirkiri", "किरकिरी"],
+          "ta": ["arippu", "அரிப்பு", "manal", "மணல்"]
+        }
+      },
+      {
+        "id": "ms_watering",
+        "symptom_en": "Watering eye",
+        "remedy_en": "Some watering is normal in the first few days. Wipe gently from the outside with a clean tissue. Do not press the eye.",
+        "keywords": {
+          "en": ["watering", "watery", "tears"],
+          "kn": ["neeru", "ನೀರು"],
+          "hi": ["paani", "पानी", "aansu", "आँसू"],
+          "ta": ["neer", "நீர்", "thanneer", "தண்ணீர்"]
+        }
+      },
+      {
+        "id": "ms_glare",
+        "symptom_en": "Glare or sensitivity to bright light",
+        "remedy_en": "Wear your dark glasses outside and in bright light. This usually settles in a few weeks.",
+        "keywords": {
+          "en": ["glare", "bright light", "light sensitive"],
+          "kn": ["belaku chuchutte", "ಬೆಳಕು ಚುಚ್ಚುತ್ತೆ", "prakhara", "ಪ್ರಖರ"],
+          "hi": ["chaundh", "चौंध", "roshni chubhti", "रोशनी चुभती"],
+          "ta": ["koosuthu", "கூசுது", "velicham", "வெளிச்சம்"]
+        }
+      }
+    ],
+    "reminders": [
+      { "day": 1, "time": "08:00", "message_en": "Put your eye drops now." },
+      { "day": 3, "time": "09:00", "message_en": "Time for your eye drops. Is your eye red or painful? Tap the mic and tell me." },
+      { "day": 6, "time": "10:00", "message_en": "Your eye check-up is tomorrow. Please come to the hospital." }
+    ]
+  },
+  {
+    "key": "template:c-section",
+    "version": 1,
+    "hospital": "hospital:demo",
+    "doctor": "user:dr-priya",
+    "name": "C-section",
+    "condition": "caesarean section",
+    "follow_up_day": 7,
+    "medicines": [
+      { "name": "Paracetamol 500 mg", "dose": "1 tablet", "frequency": "up to 3 times a day when in pain", "duration_days": 5 },
+      { "name": "Cefuroxime 500 mg", "dose": "1 tablet", "frequency": "2 times a day", "duration_days": 5 },
+      { "name": "Iron and folic acid", "dose": "1 tablet", "frequency": "once a day", "duration_days": 90 },
+      { "name": "Lactulose syrup", "dose": "15 ml", "frequency": "at night when needed", "duration_days": 7 }
+    ],
+    "dos": [
+      "Keep the wound clean and dry",
+      "Walk a little several times a day",
+      "Drink plenty of water and eat food with fibre",
+      "Support your tummy with a pillow when you cough or feed the baby"
+    ],
+    "donts": [
+      "Do not lift anything heavier than your baby for 6 weeks",
+      "Do not sit in a tub or swim until the wound heals",
+      "Do not drive for 4 weeks",
+      "No sex for 6 weeks"
+    ],
+    "red_flags": [
+      {
+        "id": "rf_heavy_bleeding",
+        "label_en": "Heavy bleeding (soaking a pad in an hour) or large clots",
+        "keywords": {
+          "en": ["heavy bleeding", "bleeding", "clots", "soaking"],
+          "kn": ["rakta", "ರಕ್ತ", "jaasti rakta", "ಜಾಸ್ತಿ ರಕ್ತ"],
+          "hi": ["khoon", "खून", "thakke", "थक्के"],
+          "ta": ["ratham", "இரத்தம்", "rattham", "ரத்தம்"]
+        }
+      },
+      {
+        "id": "rf_fever",
+        "label_en": "Fever of 38°C (100.4°F) or more, or chills",
+        "keywords": {
+          "en": ["fever", "temperature", "chills", "shivering"],
+          "kn": ["jvara", "ಜ್ವರ", "nadukku", "ನಡುಕ"],
+          "hi": ["bukhar", "बुखार", "kapkapi", "कंपकंपी"],
+          "ta": ["kaichal", "காய்ச்சல்", "nadukkam", "நடுக்கம்"]
+        }
+      },
+      {
+        "id": "rf_wound_infection",
+        "label_en": "Wound red, swollen, leaking pus or opening",
+        "keywords": {
+          "en": ["pus", "wound red", "wound open", "leaking", "swollen wound"],
+          "kn": ["keevu", "ಕೀವು", "gaaya kempu", "ಗಾಯ ಕೆಂಪು", "holige bichchide", "ಹೊಲಿಗೆ ಬಿಚ್ಚಿದೆ"],
+          "hi": ["mawad", "मवाद", "tanke khul", "टांके खुल", "tanke laal", "टांके लाल", "wound se paani"],
+          "ta": ["seel", "சீழ்", "thaiyal pirinthu", "தையல் பிரிந்து", "punnil sivappu", "புண்ணில் சிவப்பு"]
+        }
+      },
+      {
+        "id": "rf_severe_pain",
+        "label_en": "Severe or increasing tummy pain",
+        "keywords": {
+          "en": ["severe pain", "stomach pain", "tummy pain", "belly pain"],
+          "kn": ["hotte novu", "ಹೊಟ್ಟೆ ನೋವು"],
+          "hi": ["pet mein dard", "पेट में दर्द", "tez dard", "तेज़ दर्द"],
+          "ta": ["vayiru vali", "வயிறு வலி"]
+        }
+      },
+      {
+        "id": "rf_leg_swelling",
+        "label_en": "Pain, redness or swelling in one leg",
+        "keywords": {
+          "en": ["leg swelling", "leg pain", "calf pain", "swollen leg"],
+          "kn": ["kaalu oota", "ಕಾಲು ಊತ", "kaalu novu", "ಕಾಲು ನೋವು"],
+          "hi": ["pair mein sujan", "पैर में सूजन", "pair dard", "पैर दर्द"],
+          "ta": ["kaal veekkam", "கால் வீக்கம்", "kaal vali", "கால் வலி"]
+        }
+      },
+      {
+        "id": "rf_breathless",
+        "label_en": "Breathlessness or chest pain",
+        "keywords": {
+          "en": ["breathless", "short of breath", "chest pain", "can't breathe"],
+          "kn": ["usiru kashta", "ಉಸಿರು ಕಷ್ಟ", "ede novu", "ಎದೆ ನೋವು"],
+          "hi": ["saans phoolna", "साँस फूलना", "seene mein dard", "सीने में दर्द"],
+          "ta": ["moochu thinaral", "மூச்சு திணறல்", "nenju vali", "நெஞ்சு வலி"]
+        }
+      }
+    ],
+    "minor_symptoms": [
+      {
+        "id": "ms_wound_itch",
+        "symptom_en": "Mild itching around the wound",
+        "remedy_en": "Itching is common as the wound heals. Keep it clean and dry and do not scratch. Wear loose cotton clothes.",
+        "keywords": {
+          "en": ["itch", "itching", "itchy"],
+          "kn": ["turike", "ತುರಿಕೆ"],
+          "hi": ["khujli", "खुजली"],
+          "ta": ["arippu", "அரிப்பு"]
+        }
+      },
+      {
+        "id": "ms_constipation",
+        "symptom_en": "Constipation",
+        "remedy_en": "Drink plenty of water, eat fruit and vegetables, and take the lactulose syrup at night as prescribed.",
+        "keywords": {
+          "en": ["constipation", "constipated", "no motion"],
+          "kn": ["malabaddhate", "ಮಲಬದ್ಧತೆ"],
+          "hi": ["kabz", "कब्ज़", "kabj", "कब्ज"],
+          "ta": ["malachikkal", "மலச்சிக்கல்"]
+        }
+      },
+      {
+        "id": "ms_mild_soreness",
+        "symptom_en": "Mild soreness at the wound when moving",
+        "remedy_en": "Some soreness is expected. Take paracetamol as prescribed and support your tummy with a pillow when you cough or get up.",
+        "keywords": {
+          "en": ["sore", "soreness", "mild pain"],
+          "kn": ["swalpa novu", "ಸ್ವಲ್ಪ ನೋವು"],
+          "hi": ["halka dard", "हल्का दर्द"],
+          "ta": ["konjam vali", "கொஞ்சம் வலி", "lesaana vali", "லேசான வலி"]
+        }
+      }
+    ],
+    "reminders": [
+      { "day": 1, "time": "08:00", "message_en": "Time for your iron tablet." },
+      { "day": 3, "time": "09:00", "message_en": "How is your wound? If it is red, leaking or very painful, tap the mic and tell me." },
+      { "day": 6, "time": "10:00", "message_en": "Your stitch check is tomorrow. Please come to the hospital." }
+    ]
+  }
+]

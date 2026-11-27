@@ -1,0 +1,8 @@
+[
+  {
+    "key": "hospital:demo",
+    "name": "CareVoice Demo Hospital",
+    "city": "Bengaluru",
+    "default_languages": ["en", "kn", "hi", "ta"]
+  }
+]
