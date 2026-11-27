@@ -1,4 +1,4 @@
-.PHONY: install dev dev-api dev-web test lint build up seed reset
+.PHONY: install dev dev-api dev-web test lint build up seed reset reset-docker
 
 VENV := backend/.venv
 PY := $(VENV)/bin/python
@@ -24,7 +24,7 @@ test: install ## backend and frontend tests
 	cd frontend && npm test
 
 lint: install ## ruff, mypy, eslint, tsc
-	cd backend && .venv/bin/ruff check . && .venv/bin/ruff format --check . && .venv/bin/mypy app tests
+	cd backend && .venv/bin/ruff check . && .venv/bin/ruff format --check . && .venv/bin/mypy app tests conftest.py
 	cd frontend && npm run lint && npm run typecheck
 
 build: ## build the Docker image
@@ -33,5 +33,11 @@ build: ## build the Docker image
 up: ## the judges' path
 	docker compose up --build
 
-seed reset: ## seeding arrives in Part 1
-	@echo "Demo data seeding arrives in Part 1."
+seed: $(PY) ## seed the local database if it is empty
+	cd backend && .venv/bin/python -m app.modules.demo.cli seed
+
+reset: $(PY) ## restore demo data in the local database
+	cd backend && .venv/bin/python -m app.modules.demo.cli reset
+
+reset-docker: ## restore demo data inside the running container
+	docker compose exec app python -m app.modules.demo.cli reset

@@ -11,6 +11,9 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.core.config import Settings, get_settings
+from app.core.db import Database
+from app.core.events import EventBus
+from app.core.modules import load_modules
 
 logger = logging.getLogger("carevoice")
 
@@ -41,10 +44,16 @@ def mount_frontend(app: FastAPI, static_dir: Path) -> None:
     if assets.is_dir():
         app.mount("/assets", StaticFiles(directory=assets), name="assets")
 
+    @app.api_route(
+        "/api/{rest:path}",
+        methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
+        include_in_schema=False,
+    )
+    def api_not_found(rest: str) -> None:
+        raise HTTPException(status_code=404, detail="Not found")
+
     @app.get("/{full_path:path}", include_in_schema=False, response_model=None)
     def spa(full_path: str) -> FileResponse | HTMLResponse:
-        if full_path == "api" or full_path.startswith("api/"):
-            raise HTTPException(status_code=404, detail="Not found")
         candidate = (static_dir / full_path).resolve()
         if full_path and candidate.is_file() and candidate.is_relative_to(static_dir.resolve()):
             return FileResponse(candidate)
@@ -55,11 +64,22 @@ def mount_frontend(app: FastAPI, static_dir: Path) -> None:
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
+    db = Database(settings.database_url)
+    bus = EventBus()
 
     @asynccontextmanager
-    async def lifespan(_: FastAPI) -> AsyncIterator[None]:
-        logger.warning("CareVoice ready on :%s (%s mode)", settings.port, settings.provider_mode)
+    async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+        db.create_all()
+        for hook in app.state.startup_hooks:
+            hook(db, bus)
+        logger.warning(
+            "CareVoice ready on :%s (%s mode, modules: %s)",
+            settings.port,
+            settings.provider_mode,
+            ", ".join(app.state.modules) or "none",
+        )
         yield
+        db.engine.dispose()
 
     app = FastAPI(
         title="CareVoice API",
@@ -68,6 +88,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         openapi_url="/api/openapi.json",
         lifespan=lifespan,
     )
+    app.state.settings = settings
+    app.state.db = db
+    app.state.bus = bus
+    app.state.startup_hooks = []
+
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[settings.frontend_origin],
@@ -75,6 +100,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(build_api_router(settings))
+    load_modules(app, bus, settings.module_names)
+    # Last: the SPA catch-all must not shadow module routes.
     mount_frontend(app, settings.static_dir)
     return app
 

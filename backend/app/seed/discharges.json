@@ -1,0 +1,133 @@
+[
+  {
+    "key": "discharge:murugan",
+    "patient": "patient:murugan",
+    "doctor": "user:dr-priya",
+    "template": "template:cataract",
+    "template_version": 1,
+    "extra_instructions": ["Left eye operated"],
+    "discharged_days_ago": 2,
+    "status": "alert",
+    "messages": [
+      {
+        "direction": "to_patient",
+        "kind": "instructions",
+        "language": "ta",
+        "text_native": "முருகன், உங்கள் கண்புரை அறுவை சிகிச்சைக்கான பராமரிப்பு அட்டை இதோ. இவற்றில் ஏதாவது இருந்தால் இன்றே மருத்துவமனைக்கு வாருங்கள்.",
+        "text_en": "Murugan, here is your care card for cataract surgery. If any of these happen, come to the hospital today.",
+        "minutes_ago": 2880
+      },
+      {
+        "direction": "to_doctor",
+        "kind": "report",
+        "language": "ta",
+        "text_native": "கண் ரொம்ப சிவப்பா இருக்கு, வலிக்குது.",
+        "text_en": "My eye is very red and it hurts.",
+        "minutes_ago": 45
+      },
+      {
+        "direction": "to_patient",
+        "kind": "safety",
+        "language": "ta",
+        "text_native": "நீங்கள் சொன்னது முக்கியமான அறிகுறியாக இருக்கலாம். தயவுசெய்து இன்றே மருத்துவமனைக்கு வாருங்கள்.",
+        "text_en": "What you described may be an important warning sign. Please come to the hospital today.",
+        "minutes_ago": 44
+      }
+    ],
+    "reports": [
+      {
+        "transcript_native": "கண் ரொம்ப சிவப்பா இருக்கு, வலிக்குது.",
+        "detected_language": "ta",
+        "stt_confidence": 0.82,
+        "translation_en": "My eye is very red and it hurts.",
+        "report_json": {
+          "summary_en": "Patient reports marked redness and pain in the operated left eye on recovery day 3.",
+          "read_back_native": "உங்கள் கண் மிகவும் சிவப்பாகவும் வலியாகவும் உள்ளது என்று சொன்னீர்கள். சரியா?",
+          "symptoms": [
+            { "name_en": "redness", "body_part": "left eye", "severity_words": "very", "onset": null, "duration": null },
+            { "name_en": "pain", "body_part": "left eye", "severity_words": null, "onset": null, "duration": null }
+          ],
+          "recovery_day": 3,
+          "confidence": "high"
+        },
+        "matched_flag_ids": ["rf_redness", "rf_eye_pain"],
+        "matched_minor_ids": [],
+        "suggested_remedies": [],
+        "type": "alert",
+        "status": "new",
+        "confirmed_by_patient": true,
+        "minutes_ago": 45
+      }
+    ]
+  },
+  {
+    "key": "discharge:sunita",
+    "patient": "patient:sunita",
+    "doctor": "user:dr-priya",
+    "template": "template:c-section",
+    "template_version": 1,
+    "extra_instructions": [],
+    "discharged_days_ago": 4,
+    "status": "understood",
+    "messages": [
+      {
+        "direction": "to_patient",
+        "kind": "instructions",
+        "language": "hi",
+        "text_native": "सुनीता, आपके सी-सेक्शन की देखभाल का कार्ड यह है। इनमें से कुछ भी हो तो आज ही अस्पताल आएँ।",
+        "text_en": "Sunita, here is your care card for your C-section. If any of these happen, come to the hospital today.",
+        "minutes_ago": 5760
+      },
+      {
+        "direction": "to_patient",
+        "kind": "teachback_q",
+        "language": "hi",
+        "text_native": "किन बातों पर आपको आज ही अस्पताल आना चाहिए?",
+        "text_en": "Which signs mean you should come to the hospital today?",
+        "minutes_ago": 5750
+      },
+      {
+        "direction": "to_doctor",
+        "kind": "teachback_a",
+        "language": "hi",
+        "text_native": "बहुत खून आए, बुखार हो, टांकों से मवाद आए, पेट में तेज़ दर्द हो, पैर सूज जाए या साँस फूले।",
+        "text_en": "If there is heavy bleeding, fever, pus from the stitches, severe tummy pain, a swollen leg or breathlessness.",
+        "minutes_ago": 5745
+      },
+      {
+        "direction": "to_doctor",
+        "kind": "report",
+        "language": "hi",
+        "text_native": "टांकों के पास बहुत खुजली हो रही है, और कुछ नहीं।",
+        "text_en": "There is a lot of itching near the stitches, nothing else.",
+        "minutes_ago": 30
+      }
+    ],
+    "reports": [
+      {
+        "transcript_native": "टांकों के पास बहुत खुजली हो रही है, और कुछ नहीं।",
+        "detected_language": "hi",
+        "stt_confidence": 0.9,
+        "translation_en": "There is a lot of itching near the stitches, nothing else.",
+        "report_json": {
+          "summary_en": "Patient reports itching around the C-section wound on recovery day 5, with no other symptoms.",
+          "read_back_native": "आपने बताया कि टांकों के पास खुजली हो रही है, और कोई तकलीफ़ नहीं। सही है?",
+          "symptoms": [
+            { "name_en": "itching", "body_part": "wound", "severity_words": "a lot", "onset": null, "duration": null }
+          ],
+          "recovery_day": 5,
+          "confidence": "high"
+        },
+        "matched_flag_ids": [],
+        "matched_minor_ids": ["ms_wound_itch"],
+        "suggested_remedies": [
+          { "minor_id": "ms_wound_itch", "from_template": true }
+        ],
+        "type": "minor",
+        "status": "new",
+        "confirmed_by_patient": true,
+        "minutes_ago": 30
+      }
+    ]
+  }
+]

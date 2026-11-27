@@ -1,0 +1,41 @@
+[
+  {
+    "key": "patient:ramesh",
+    "hospital": "hospital:demo",
+    "name": "Ramesh",
+    "age": 68,
+    "sex": "male",
+    "phone": "+91 90000 10001",
+    "preferred_language": "kn",
+    "consented": false,
+    "carers": [
+      { "key": "carer:ramesh-kiran", "name": "Kiran", "relation": "son", "phone": "+91 90000 20001", "preferred_language": "kn" }
+    ]
+  },
+  {
+    "key": "patient:sunita",
+    "hospital": "hospital:demo",
+    "name": "Sunita",
+    "age": 29,
+    "sex": "female",
+    "phone": "+91 90000 10002",
+    "preferred_language": "hi",
+    "consented": true,
+    "carers": [
+      { "key": "carer:sunita-arjun", "name": "Arjun", "relation": "husband", "phone": "+91 90000 20002", "preferred_language": "hi" }
+    ]
+  },
+  {
+    "key": "patient:murugan",
+    "hospital": "hospital:demo",
+    "name": "Murugan",
+    "age": 55,
+    "sex": "male",
+    "phone": "+91 90000 10003",
+    "preferred_language": "ta",
+    "consented": true,
+    "carers": [
+      { "key": "carer:murugan-lakshmi", "name": "Lakshmi", "relation": "daughter", "phone": "+91 90000 20003", "preferred_language": "ta" }
+    ]
+  }
+]

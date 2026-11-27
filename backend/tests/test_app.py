@@ -1,13 +1,14 @@
+import tempfile
 from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from app.core.config import Settings
 from app.main import create_app
+from tests.support import make_settings
 
 
 def make_client(static_dir: Path) -> TestClient:
-    return TestClient(create_app(Settings(static_dir=static_dir)))
+    return TestClient(create_app(make_settings(Path(tempfile.mkdtemp()), static_dir=static_dir)))
 
 
 def test_health_reports_demo_mode_by_default(tmp_path: Path) -> None:

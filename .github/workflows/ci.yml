@@ -21,7 +21,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - run: ruff check .
       - run: ruff format --check .
-      - run: mypy app tests
+      - run: mypy app tests conftest.py
       - run: pytest -q
 
   frontend:
@@ -69,5 +69,7 @@ jobs:
           exit 1
       - name: Main screen is our app, not a default page
         run: curl -fsS http://localhost:3000/ | grep -q "<title>CareVoice</title>"
+      - name: Demo data is seeded and resettable
+        run: curl -fsS -X POST http://localhost:3000/api/v1/demo/reset | grep -q '"patients":3'
       - if: always()
         run: docker compose down -v
