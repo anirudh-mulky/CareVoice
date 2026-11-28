@@ -1,9 +1,12 @@
 import type { RouteObject } from "react-router-dom";
-import { DoctorReportPage } from "./DoctorReportPage";
-import { PatientReportPage } from "./PatientReportPage";
+import { page } from "@/shared/lazyRoute";
 
 /** Child routes of the patient link (/p/:token/...). */
-export const reportPatientRoutes: RouteObject[] = [{ path: "report", element: <PatientReportPage /> }];
+export const reportPatientRoutes: RouteObject[] = [
+  { path: "report", lazy: page(() => import("./PatientReportPage"), (m) => m.PatientReportPage) },
+];
 
 /** Child routes of /doctor. */
-export const reportDoctorRoutes: RouteObject[] = [{ path: "reports/:reportId", element: <DoctorReportPage /> }];
+export const reportDoctorRoutes: RouteObject[] = [
+  { path: "reports/:reportId", lazy: page(() => import("./DoctorReportPage"), (m) => m.DoctorReportPage) },
+];

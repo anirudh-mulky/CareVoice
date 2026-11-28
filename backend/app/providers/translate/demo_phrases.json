@@ -51,5 +51,9 @@
   "report_wound_itch": {
     "en": "There is a lot of itching near the stitches, nothing else.",
     "hi": "टांकों के पास बहुत खुजली हो रही है, और कुछ नहीं।"
+  },
+  "report_wound_itch_latin": {
+    "en": "There is a lot of itching near the stitches, nothing else.",
+    "hi": "Tanko ke paas bahut khujli ho rahi hai, aur kuch nahi."
   }
 }
