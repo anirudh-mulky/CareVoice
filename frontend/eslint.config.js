@@ -5,7 +5,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", "node_modules"] },
+  { ignores: ["dist", "node_modules", "src/shared/api/schema.d.ts"] },
   {
     files: ["**/*.{ts,tsx}"],
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
@@ -17,7 +17,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ["src/shared/ui/**/*.tsx"],
+    files: ["src/shared/ui/**/*.tsx", "src/shared/i18n.tsx"],
     rules: { "react-refresh/only-export-components": "off" },
   },
 );

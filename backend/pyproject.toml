@@ -17,3 +17,7 @@ plugins = ["pydantic.mypy"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "app"]
+
+[tool.ruff.lint.flake8-bugbear]
+# FastAPI's dependency style: Depends()/Query()/Header() in defaults is intended.
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Header"]

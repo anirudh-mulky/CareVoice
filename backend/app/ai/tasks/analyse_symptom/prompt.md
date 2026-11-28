@@ -1,0 +1,3 @@
+Task: analyse_symptom.
+The INPUT holds the patient's spoken report (native language and English), this patient's red flags and minor symptoms, recovery day and medicines. Return summary_en (one factual sentence for the doctor), read_back_native (a short question in the patient's language repeating what they said, ending with "is that right?"), symptoms (name_en, body_part, severity_words, onset, duration), matched_flag_ids, matched_minor_ids, suggested_remedies (minor_id and the template's remedy_en, copied exactly) and confidence (high or low).
+Only use ids from the INPUT. If any symptom might be a red flag, include it and set confidence to low. Ignore symptoms the patient says they do not have.

@@ -1,0 +1,84 @@
+# Kannada lexicon: native script and romanised (what browser speech often returns).
+# Matching: stems, so ಕೆಂಪು also matches ಕೆಂಪಾಗಿದೆ and kempu matches kempagide.
+# Needs review by a native speaker before real use.
+language: kn
+label: ಕನ್ನಡ
+names: [kannada, ಕನ್ನಡ, kannad]
+
+concepts:
+  pain:
+    label: ನೋವು
+    keywords: [novu, ನೋವು, novide, ನೋವಿದೆ, novagtide, ನೋವಾಗ್ತಿದೆ]
+  redness:
+    label: ಕೆಂಪು
+    keywords: [kempu, ಕೆಂಪು, kempagide, ಕೆಂಪಾಗಿದೆ]
+  vision_loss:
+    label: ಕಣ್ಣು ಕಾಣಿಸದಿರುವುದು
+    keywords: [kaanisuttilla, ಕಾಣಿಸುತ್ತಿಲ್ಲ, kaanta illa, kanistilla, ಕಾಣ್ತಿಲ್ಲ, kaantilla,
+               kaanisadiddare, kaanisdiddre, ಕಾಣಿಸದಿದ್ದರೆ, kaanisalla]
+  blur:
+    label: ಮಬ್ಬು
+    keywords: [mabbu, ಮಬ್ಬು, manju, ಮಂಜು]
+  pus:
+    label: ಕೀವು
+    keywords: [keevu, ಕೀವು, kivu]
+  discharge:
+    label: ಅಂಟು ಸ್ರಾವ
+    keywords: [antu, ಅಂಟು]
+  flashes:
+    label: ಬೆಳಕಿನ ಮಿಂಚು
+    keywords: [minchu, ಮಿಂಚು, chukke, ಚುಕ್ಕೆ, parade, ಪರದೆ]
+  vomiting:
+    label: ವಾಂತಿ
+    keywords: [vaanti, ವಾಂತಿ, vanti]
+  nausea:
+    label: ವಾಕರಿಕೆ
+    keywords: [vaakarike, ವಾಕರಿಕೆ]
+  bleeding:
+    label: ರಕ್ತಸ್ರಾವ
+    keywords: [rakta, ರಕ್ತ, raktha]
+  fever:
+    label: ಜ್ವರ
+    keywords: [jvara, ಜ್ವರ, jwara, nadukku, ನಡುಕ]
+  swelling:
+    label: ಊತ
+    keywords: [oota, ಊತ, baavu, ಬಾವು]
+  wound_problem:
+    label: ಹೊಲಿಗೆ ಬಿಚ್ಚಿರುವುದು
+    keywords: [holige bichchide, ಹೊಲಿಗೆ ಬಿಚ್ಚಿದೆ, gaaya bichchide]
+  breathless:
+    label: ಉಸಿರಾಟದ ತೊಂದರೆ
+    keywords: [usiru kashta, ಉಸಿರು ಕಷ್ಟ, ede novu, ಎದೆ ನೋವು, usiru katti]
+  itching:
+    label: ತುರಿಕೆ
+    keywords: [turike, ತುರಿಕೆ, kerata, ಕೆರೆತ]
+  watering:
+    label: ಕಣ್ಣಿನಲ್ಲಿ ನೀರು
+    keywords: [neeru baruttide, ನೀರು ಬರುತ್ತಿದೆ, kanneeru, ಕಣ್ಣೀರು]
+  glare:
+    label: ಬೆಳಕು ಚುಚ್ಚುವುದು
+    keywords: [belaku chuchutte, ಬೆಳಕು ಚುಚ್ಚುತ್ತೆ, prakhara, ಪ್ರಖರ]
+  constipation:
+    label: ಮಲಬದ್ಧತೆ
+    keywords: [malabaddhate, ಮಲಬದ್ಧತೆ, motion aagilla]
+
+negation_before: []
+# "novu illa" = no pain. Checked in the 2 words after a symptom.
+negation_after: [illa, ಇಲ್ಲ, illla, alla, ಅಲ್ಲ]
+negation_suffixes: [illa, ಇಲ್ಲ]
+# "novu kadime aagilla" = pain has not reduced: still escalate.
+negation_blockers: [kadime, ಕಡಿಮೆ, kammi, ಕಮ್ಮಿ, nilthilla, nintilla]
+clause_breakers: [aadre, ಆದರೆ, aadare, mattu, ಮತ್ತು]
+
+intensifiers: [tumba, ತುಂಬಾ, jaasti, ಜಾಸ್ತಿ, hechchu, ಹೆಚ್ಚು]
+mild: [swalpa, ಸ್ವಲ್ಪ, kammi, ಕಮ್ಮಿ]
+onset_words: [ninne, ನಿನ್ನೆ, ivattu, ಇವತ್ತು, beligge, ಬೆಳಿಗ್ಗೆ, raatri, ರಾತ್ರಿ]
+duration_units: [dina, ದಿನ, dinadinda, ghante, ಗಂಟೆ, gante]
+
+"yes": [haudu, ಹೌದು, howdu, sari, ಸರಿ]
+"no": [illa, ಇಲ್ಲ, alla, ಅಲ್ಲ, tappu, ತಪ್ಪು]
+
+read_back: "ನೀವು ಹೇಳಿದ್ದು: {items}. ಇದು ಸರಿಯೇ?"
+read_back_general: "ನೀವು ಹೇಳಿದ್ದನ್ನು ನಿಮ್ಮ ವೈದ್ಯರಿಗೆ ಕಳುಹಿಸುತ್ತೇನೆ. ಸರಿಯೇ?"
+joiner: ಮತ್ತು
+very: ತುಂಬಾ

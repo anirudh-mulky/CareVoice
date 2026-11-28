@@ -91,6 +91,7 @@ class JobStatus(enum.StrEnum):
     pending = "pending"
     done = "done"
     failed = "failed"
+    cancelled = "cancelled"  # the care episode closed before it was due
 
 
 class ActorType(enum.StrEnum):
@@ -119,6 +120,7 @@ class Hospital(Base):
     id: Mapped[uuid.UUID] = _uuid_pk()
     name: Mapped[str] = mapped_column(String(200))
     city: Mapped[str] = mapped_column(String(100))
+    phone: Mapped[str | None] = mapped_column(String(32))  # the patient's "Call hospital" button
     default_languages: Mapped[list[str]] = mapped_column(JsonType, default=list)
     created_at: Mapped[datetime] = _created_at()
 
@@ -143,7 +145,7 @@ class Patient(Base):
     id: Mapped[uuid.UUID] = _uuid_pk()
     hospital_id: Mapped[uuid.UUID] = _hospital_fk()
     name: Mapped[str] = mapped_column(String(200))
-    age: Mapped[int] = mapped_column(Integer)
+    age: Mapped[int | None] = mapped_column(Integer)  # None until the doctor says it
     sex: Mapped[str] = mapped_column(String(16))
     phone: Mapped[str | None] = mapped_column(String(32))
     preferred_language: Mapped[str] = mapped_column(String(8))
@@ -235,6 +237,7 @@ class Discharge(Base):
     doctor_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"))
     template_id: Mapped[uuid.UUID] = mapped_column()
     template_version: Mapped[int] = mapped_column(Integer)
+    side: Mapped[str | None] = mapped_column(String(16))  # right / left / both (e.g. which eye)
     extra_instructions: Mapped[list[str]] = mapped_column(JsonType, default=list)
     discharged_on: Mapped[date] = mapped_column(Date)
     status: Mapped[DischargeStatus] = mapped_column(
@@ -288,6 +291,8 @@ class Report(Base):
     status: Mapped[ReportStatus] = mapped_column(_enum(ReportStatus), default=ReportStatus.new)
     reported_by: Mapped[ActorType] = mapped_column(_enum(ActorType), default=ActorType.patient)
     confirmed_by_patient: Mapped[bool] = mapped_column(Boolean, default=False)
+    # The patient said "no" to the read-back: kept for the audit, never shown to the doctor.
+    rejected_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = _created_at()
 
 
@@ -325,6 +330,28 @@ class ScheduledJob(Base):
     due_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     status: Mapped[JobStatus] = mapped_column(_enum(JobStatus), default=JobStatus.pending)
     attempts: Mapped[int] = mapped_column(Integer, default=0)
+    created_at: Mapped[datetime] = _created_at()
+
+
+class AccessToken(Base):
+    """Patient and carer links: no login, an unguessable token in the URL (spec: "API design").
+
+    Only a SHA-256 hash is stored, so a database leak does not leak working links.
+    Tokens expire after the care episode and can be revoked.
+    """
+
+    __tablename__ = "access_tokens"
+
+    id: Mapped[uuid.UUID] = _uuid_pk()
+    hospital_id: Mapped[uuid.UUID] = _hospital_fk()
+    discharge_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("discharges.id", ondelete="CASCADE"), index=True
+    )
+    recipient_type: Mapped[ActorType] = mapped_column(_enum(ActorType))  # patient or carer
+    recipient_id: Mapped[uuid.UUID] = mapped_column()
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = _created_at()
 
 

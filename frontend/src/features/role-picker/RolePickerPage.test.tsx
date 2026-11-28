@@ -29,6 +29,6 @@ test("main screen offers the doctor and patient roles", async () => {
 
 test("unknown screens show a placeholder, not a blank page", () => {
   vi.stubGlobal("fetch", vi.fn(async () => Response.json({})));
-  renderAt("/doctor");
+  renderAt("/somewhere-not-built");
   expect(screen.getByText(/on its way/)).toBeInTheDocument();
 });

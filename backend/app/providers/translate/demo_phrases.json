@@ -1,0 +1,55 @@
+{
+  "visit_today": {
+    "en": "Please come to the hospital today.",
+    "kn": "ದಯವಿಟ್ಟು ಇಂದೇ ಆಸ್ಪತ್ರೆಗೆ ಬನ್ನಿ.",
+    "hi": "कृपया आज ही अस्पताल आएँ।",
+    "ta": "தயவுசெய்து இன்றே மருத்துவமனைக்கு வாருங்கள்."
+  },
+  "not_heard": {
+    "en": "Sorry, I couldn't hear you clearly. Please say it again, closer to the phone.",
+    "kn": "ಕ್ಷಮಿಸಿ, ನನಗೆ ಸರಿಯಾಗಿ ಕೇಳಿಸಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಫೋನ್ ಹತ್ತಿರ ಬಂದು ಮತ್ತೆ ಹೇಳಿ.",
+    "hi": "माफ़ कीजिए, मुझे ठीक से सुनाई नहीं दिया। कृपया फ़ोन के पास आकर फिर से बोलें।",
+    "ta": "மன்னிக்கவும், எனக்குத் தெளிவாகக் கேட்கவில்லை. தயவுசெய்து போனுக்கு அருகில் வந்து மீண்டும் சொல்லுங்கள்."
+  },
+  "is_that_right": {
+    "en": "Is that right?",
+    "kn": "ಇದು ಸರಿಯೇ?",
+    "hi": "क्या यह सही है?",
+    "ta": "இது சரியா?"
+  },
+  "sent_to_doctor": {
+    "en": "Thank you. Your doctor has received your message.",
+    "kn": "ಧನ್ಯವಾದಗಳು. ನಿಮ್ಮ ವೈದ್ಯರಿಗೆ ನಿಮ್ಮ ಸಂದೇಶ ತಲುಪಿದೆ.",
+    "hi": "धन्यवाद। आपके डॉक्टर को आपका संदेश मिल गया है।",
+    "ta": "நன்றி. உங்கள் மருத்துவருக்கு உங்கள் செய்தி கிடைத்துவிட்டது."
+  },
+  "not_a_doctor": {
+    "en": "This app does not replace your doctor. In an emergency, go to the nearest hospital.",
+    "kn": "ಈ ಆ್ಯಪ್ ನಿಮ್ಮ ವೈದ್ಯರಿಗೆ ಬದಲಿಯಲ್ಲ. ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ಹತ್ತಿರದ ಆಸ್ಪತ್ರೆಗೆ ಹೋಗಿ.",
+    "hi": "यह ऐप आपके डॉक्टर की जगह नहीं लेता। आपात स्थिति में नज़दीकी अस्पताल जाएँ।",
+    "ta": "இந்த ஆப் உங்கள் மருத்துவருக்கு மாற்று அல்ல. அவசர நிலையில் அருகிலுள்ள மருத்துவமனைக்குச் செல்லுங்கள்."
+  },
+  "demo_red_eye": {
+    "en": "My eye is very red and it hurts.",
+    "kn": "ಕಣ್ಣು ತುಂಬಾ ಕೆಂಪಾಗಿದೆ, ನೋವು ಇದೆ.",
+    "kn-Latn": "Kannu tumba kempagide, novu ide.",
+    "ta": "கண் ரொம்ப சிவப்பா இருக்கு, வலிக்குது."
+  },
+  "demo_wound_itch": {
+    "en": "There is a lot of itching near the stitches, nothing else.",
+    "hi": "टांकों के पास बहुत खुजली हो रही है, और कुछ नहीं।",
+    "hi-Latn": "Tanko ke paas bahut khujli ho rahi hai, aur kuch nahi."
+  },
+  "report_red_eye": {
+    "en": "My eye is very red, and there is pain.",
+    "kn": "ಕಣ್ಣು ತುಂಬಾ ಕೆಂಪಾಗಿದೆ, ನೋವು ಇದೆ."
+  },
+  "report_red_eye_latin": {
+    "en": "My eye is very red, and there is pain.",
+    "kn": "Kannu tumba kempagide, novu ide."
+  },
+  "report_wound_itch": {
+    "en": "There is a lot of itching near the stitches, nothing else.",
+    "hi": "टांकों के पास बहुत खुजली हो रही है, और कुछ नहीं।"
+  }
+}

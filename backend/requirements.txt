@@ -3,3 +3,6 @@ uvicorn[standard]==0.54.0
 pydantic==2.14.4
 pydantic-settings==2.16.3
 SQLAlchemy==2.1.9
+PyYAML==6.0.4
+anthropic==2.14.0
+httpx2==2.16.2

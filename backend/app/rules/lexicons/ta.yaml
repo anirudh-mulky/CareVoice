@@ -1,0 +1,82 @@
+# Tamil lexicon: Tamil script and romanised (Tanglish). Needs review by a native speaker.
+language: ta
+label: தமிழ்
+names: [tamil, தமிழ்]
+
+concepts:
+  pain:
+    label: வலி
+    keywords: [vali, வலி, valikkuthu, வலிக்குது, valikudhu]
+  redness:
+    label: சிவப்பு
+    keywords: [sivappu, சிவப்பு, sivappa, சிவப்பா, sigappu, சிகப்பு]
+  vision_loss:
+    label: பார்வை தெரியாமை
+    keywords: [theriyala, தெரியல, theriyavillai, தெரியவில்லை]
+  blur:
+    label: மங்கலான பார்வை
+    keywords: [mangal, மங்கல், mangalaaga, மங்கலாக]
+  pus:
+    label: சீழ்
+    keywords: [seel, சீழ், seezh]
+  discharge:
+    label: கசிவு
+    keywords: [pisupisuppu, பிசுபிசுப்பு, kasivu, கசிவு]
+  flashes:
+    label: ஒளி மின்னல்
+    keywords: [minnal, மின்னல், pulli, புள்ளி, thirai, திரை]
+  vomiting:
+    label: வாந்தி
+    keywords: [vaanthi, வாந்தி, vandhi]
+  nausea:
+    label: குமட்டல்
+    keywords: [kumattal, குமட்டல்]
+  bleeding:
+    label: இரத்தப்போக்கு
+    keywords: [ratham, இரத்தம், rattham, ரத்தம்]
+  fever:
+    label: காய்ச்சல்
+    keywords: [kaichal, காய்ச்சல், kaaychal, nadukkam, நடுக்கம்]
+  swelling:
+    label: வீக்கம்
+    keywords: [veekkam, வீக்கம், veengi, வீங்கி]
+  wound_problem:
+    label: தையல் பிரிதல்
+    keywords: [thaiyal pirinthu, தையல் பிரிந்து, pun thirandhu]
+  breathless:
+    label: மூச்சுத் திணறல் அல்லது நெஞ்சு வலி
+    keywords: [moochu thinaral, மூச்சு திணறல், moochu vidamudiyala, nenju vali, நெஞ்சு வலி]
+  itching:
+    label: அரிப்பு
+    keywords: [arippu, அரிப்பு]
+  watering:
+    label: கண்ணில் நீர் வடிதல்
+    keywords: [neer varuthu, நீர் வருது, kanneer, கண்ணீர், thanneer varuthu, thanni varudhu]
+  glare:
+    label: வெளிச்சம் கூசுதல்
+    keywords: [koosuthu, கூசுது, koosudhu]
+  constipation:
+    label: மலச்சிக்கல்
+    keywords: [malachikkal, மலச்சிக்கல்]
+
+negation_before: []
+# "vali illa" = no pain.
+negation_after: [illa, illai, இல்லை, இல்ல, illae]
+# "valikkala" = does not hurt.
+negation_suffixes: [kala, கல, illa, இல்ல, illai, இல்லை]
+# "vali koraiyala" = pain not reducing: still escalate.
+negation_blockers: [korai, குறை, koraiyala, kuraiyala, nikkala, நிக்கல]
+clause_breakers: [aana, ஆனா, aanaal, ஆனால், matrum, மற்றும்]
+
+intensifiers: [romba, ரொம்ப, adhigam, அதிகம், nalla]
+mild: [konjam, கொஞ்சம், lesaa, லேசா, lesaana, லேசான]
+onset_words: [nethu, நேத்து, inniki, இன்னிக்கு, kaalaiyila, காலையில, raathiri, ராத்திரி]
+duration_units: [naal, நாள், naala, naalaa, mani, மணி]
+
+"yes": [aamaa, ஆமா, aam, ஆம், sari, சரி]
+"no": [illa, இல்லை, illai, thappu, தப்பு, alla, அல்ல]
+
+read_back: "நீங்கள் சொன்னது: {items}. இது சரியா?"
+read_back_general: "நீங்கள் சொன்னதை உங்கள் மருத்துவருக்கு அனுப்புகிறேன். சரியா?"
+joiner: மற்றும்
+very: ரொம்ப

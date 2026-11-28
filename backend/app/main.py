@@ -1,5 +1,7 @@
 """CareVoice API and static React app, served together on one port."""
 
+import asyncio
+import contextlib
 import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
@@ -10,10 +12,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
+from app.ai.registry import install_demo_rules
+from app.channels.registry import ChannelRegistry
 from app.core.config import Settings, get_settings
 from app.core.db import Database
+from app.core.errors import register_error_handlers
 from app.core.events import EventBus
 from app.core.modules import load_modules
+from app.core.system import build_system_router
+from app.providers.registry import ProviderRegistry
 
 logger = logging.getLogger("carevoice")
 
@@ -69,9 +76,19 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+        drift = db.schema_drift()
+        if drift and settings.demo_endpoints:
+            # Demo data only: rebuild rather than crash on an old local database.
+            logger.warning("Database schema changed (%s); recreating demo data", ", ".join(drift))
+            db.drop_all()
+        elif drift:
+            raise RuntimeError(
+                f"Database schema is out of date ({', '.join(drift)}); run migrations"
+            )
         db.create_all()
         for hook in app.state.startup_hooks:
             hook(db, bus)
+        tasks = [asyncio.create_task(loop()) for loop in app.state.background_loops]
         logger.warning(
             "CareVoice ready on :%s (%s mode, modules: %s)",
             settings.port,
@@ -79,6 +96,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             ", ".join(app.state.modules) or "none",
         )
         yield
+        for task in tasks:
+            task.cancel()
+        for task in tasks:
+            with contextlib.suppress(asyncio.CancelledError):
+                await task
         db.engine.dispose()
 
     app = FastAPI(
@@ -91,8 +113,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.settings = settings
     app.state.db = db
     app.state.bus = bus
+    app.state.providers = ProviderRegistry(settings)
+    install_demo_rules(app.state.providers)
+    app.state.channels = ChannelRegistry(settings)
     app.state.startup_hooks = []
+    app.state.background_loops = []
 
+    register_error_handlers(app)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[settings.frontend_origin],
@@ -100,6 +127,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(build_api_router(settings))
+    app.include_router(build_system_router())
     load_modules(app, bus, settings.module_names)
     # Last: the SPA catch-all must not shadow module routes.
     mount_frontend(app, settings.static_dir)
