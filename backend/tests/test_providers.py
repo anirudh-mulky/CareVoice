@@ -79,6 +79,25 @@ async def test_demo_translator_works_towards_english_for_the_doctor() -> None:
     assert english == "My eye is very red and it hurts."
 
 
+@pytest.mark.parametrize(
+    ("spoken", "lang", "english"),
+    [
+        ("Kannu tumba kempagide, novu ide.", "kn", "My eye is very red, and there is pain."),
+        (
+            "Tanko ke paas bahut khujli ho rahi hai, aur kuch nahi.",
+            "hi",
+            "There is a lot of itching near the stitches, nothing else.",
+        ),
+    ],
+)
+async def test_demo_translator_reads_romanised_demo_phrases_in_the_patients_language(
+    spoken: str, lang: str, english: str
+) -> None:
+    # Reports translate with the patient's language code ("hi"), not "hi-Latn": the README's
+    # demo phrases must still reach the doctor in English.
+    assert await DemoTranslator().translate(spoken, lang, "en") == english
+
+
 async def test_demo_translator_ignores_case_spacing_and_end_punctuation() -> None:
     t = DemoTranslator()
     assert await t.translate("  please come to the HOSPITAL   today ", "en", "hi") == (

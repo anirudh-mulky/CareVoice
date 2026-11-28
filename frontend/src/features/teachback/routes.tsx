@@ -1,5 +1,7 @@
 import type { RouteObject } from "react-router-dom";
-import { TeachbackPage } from "./TeachbackPage";
+import { page } from "@/shared/lazyRoute";
 
 /** Child routes of the patient link (/p/:token/...). */
-export const teachbackPatientRoutes: RouteObject[] = [{ path: "teachback", element: <TeachbackPage /> }];
+export const teachbackPatientRoutes: RouteObject[] = [
+  { path: "teachback", lazy: page(() => import("./TeachbackPage"), (m) => m.TeachbackPage) },
+];
