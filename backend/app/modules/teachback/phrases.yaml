@@ -1,0 +1,34 @@
+# Teach-back wording per language. {flags} is the list of warning signs from the template's
+# verified translation. Needs a native-speaker check before a pilot.
+en:
+  question: "Tell me in your own words: when should you come back to the hospital?"
+  well_done: "Well done. You know the warning signs."
+  also_remember: "Well done. Please also remember: {flags}"
+  reexplain: "Please also remember these warning signs: {flags}"
+  ask_again: "Now please tell me again: when should you come back to the hospital?"
+  follow_up: "Thank you. Please remember these warning signs: {flags} Your care team will go over them with you."
+  joiner: " "
+kn:
+  question: "ನಿಮ್ಮ ಮಾತಿನಲ್ಲೇ ಹೇಳಿ: ಯಾವಾಗ ಆಸ್ಪತ್ರೆಗೆ ಮತ್ತೆ ಬರಬೇಕು?"
+  well_done: "ಚೆನ್ನಾಗಿದೆ. ನಿಮಗೆ ಎಚ್ಚರಿಕೆಯ ಲಕ್ಷಣಗಳು ಗೊತ್ತಿವೆ."
+  also_remember: "ಚೆನ್ನಾಗಿದೆ. ಇದನ್ನೂ ನೆನಪಿಡಿ: {flags}"
+  reexplain: "ಈ ಎಚ್ಚರಿಕೆಯ ಲಕ್ಷಣಗಳನ್ನೂ ನೆನಪಿಡಿ: {flags}"
+  ask_again: "ಈಗ ಮತ್ತೊಮ್ಮೆ ಹೇಳಿ: ಯಾವಾಗ ಆಸ್ಪತ್ರೆಗೆ ಮತ್ತೆ ಬರಬೇಕು?"
+  follow_up: "ಧನ್ಯವಾದ. ಈ ಎಚ್ಚರಿಕೆಯ ಲಕ್ಷಣಗಳನ್ನು ನೆನಪಿಡಿ: {flags} ನಿಮ್ಮ ಆರೈಕೆ ತಂಡ ಇವುಗಳನ್ನು ನಿಮ್ಮೊಂದಿಗೆ ಮತ್ತೆ ಮಾತನಾಡುತ್ತದೆ."
+  joiner: " "
+hi:
+  question: "अपने शब्दों में बताइए: आपको अस्पताल कब वापस आना चाहिए?"
+  well_done: "बहुत अच्छा। आपको ख़तरे के लक्षण पता हैं।"
+  also_remember: "बहुत अच्छा। यह भी याद रखिए: {flags}"
+  reexplain: "ये ख़तरे के लक्षण भी याद रखिए: {flags}"
+  ask_again: "अब फिर से बताइए: आपको अस्पताल कब वापस आना चाहिए?"
+  follow_up: "धन्यवाद। ये ख़तरे के लक्षण याद रखिए: {flags} आपकी देखभाल टीम आपके साथ इन्हें फिर से समझाएगी।"
+  joiner: " "
+ta:
+  question: "உங்கள் வார்த்தைகளில் சொல்லுங்கள்: எப்போது மருத்துவமனைக்கு மீண்டும் வர வேண்டும்?"
+  well_done: "நன்று. உங்களுக்கு எச்சரிக்கை அறிகுறிகள் தெரியும்."
+  also_remember: "நன்று. இதையும் நினைவில் வையுங்கள்: {flags}"
+  reexplain: "இந்த எச்சரிக்கை அறிகுறிகளையும் நினைவில் வையுங்கள்: {flags}"
+  ask_again: "இப்போது மீண்டும் சொல்லுங்கள்: எப்போது மருத்துவமனைக்கு மீண்டும் வர வேண்டும்?"
+  follow_up: "நன்றி. இந்த எச்சரிக்கை அறிகுறிகளை நினைவில் வையுங்கள்: {flags} உங்கள் பராமரிப்புக் குழு இவற்றை உங்களுடன் மீண்டும் பேசும்."
+  joiner: " "

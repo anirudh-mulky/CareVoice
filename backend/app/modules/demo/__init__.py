@@ -1,4 +1,5 @@
-"""Demo module: seeds synthetic data on first start and exposes POST /api/v1/demo/reset."""
+"""Demo module: seeds synthetic data on first start; POST /api/v1/demo/reset and
+/api/v1/demo/advance-day ("Simulate next day")."""
 
 from fastapi import FastAPI
 

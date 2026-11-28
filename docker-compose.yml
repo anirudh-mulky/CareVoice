@@ -3,8 +3,13 @@ services:
     build: .
     ports:
       - "3000:3000"
+    # Optional: settings and keys from .env when it exists. The app starts without it.
+    env_file:
+      - path: .env
+        required: false
     environment:
       - PROVIDER_MODE=${PROVIDER_MODE:-demo} # works with no .env file
+      - SIMULATE_FAILURES=${SIMULATE_FAILURES:-} # demo/QA only, empty = off
     volumes:
       - carevoice-data:/app/data
     restart: unless-stopped

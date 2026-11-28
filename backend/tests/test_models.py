@@ -20,6 +20,7 @@ EXPECTED_TABLES = {
     "reports",
     "events",
     "scheduled_jobs",
+    "access_tokens",
 }
 
 
@@ -104,7 +105,7 @@ def make_graph(db: Database) -> dict[str, uuid.UUID]:
     return ids
 
 
-def test_all_eleven_tables_exist(db: Database) -> None:
+def test_all_tables_exist(db: Database) -> None:
     assert set(inspect(db.engine).get_table_names()) == EXPECTED_TABLES
 
 
@@ -192,3 +193,18 @@ def test_events_are_append_only(db: Database) -> None:
         s.delete(s.scalars(select(m.Event)).one())
     with db.session() as s:
         assert s.scalars(select(m.Event.type)).one() == "discharge.approved"
+
+
+def test_schema_drift_is_detected(tmp_path: object) -> None:
+    from pathlib import Path
+
+    from sqlalchemy import text
+
+    path = Path(str(tmp_path)) / "old.db"
+    old = Database(f"sqlite:///{path}")
+    assert old.schema_drift() == []  # empty database: nothing to compare
+    old.create_all()
+    assert old.schema_drift() == []
+    with old.engine.begin() as conn:
+        conn.execute(text("ALTER TABLE discharges DROP COLUMN side"))
+    assert old.schema_drift() == ["discharges.side"]

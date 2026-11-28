@@ -1,4 +1,4 @@
-.PHONY: install dev dev-api dev-web test lint build up seed reset reset-docker
+.PHONY: install dev dev-api dev-web test lint build up seed reset reset-docker types
 
 VENV := backend/.venv
 PY := $(VENV)/bin/python
@@ -26,6 +26,10 @@ test: install ## backend and frontend tests
 lint: install ## ruff, mypy, eslint, tsc
 	cd backend && .venv/bin/ruff check . && .venv/bin/ruff format --check . && .venv/bin/mypy app tests conftest.py
 	cd frontend && npm run lint && npm run typecheck
+
+types: $(PY) ## regenerate frontend API types from the backend schema
+	cd backend && .venv/bin/python -m app.export_openapi ../frontend/src/shared/api/openapi.json
+	cd frontend && npm run gen:api
 
 build: ## build the Docker image
 	docker compose build

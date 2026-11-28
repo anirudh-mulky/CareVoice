@@ -1,0 +1,82 @@
+# Hindi lexicon: Devanagari and romanised (Hinglish). Needs review by a native speaker.
+language: hi
+label: हिंदी
+names: [hindi, हिंदी, हिन्दी]
+
+concepts:
+  pain:
+    label: दर्द
+    keywords: [dard, दर्द, dukh raha, दुख रहा]
+  redness:
+    label: लाली
+    keywords: [laal, लाल, lal, laali, लाली]
+  vision_loss:
+    label: दिखाई न देना
+    keywords: [dikh nahi, दिख नहीं, dikhai nahi, दिखाई नहीं, andhera, अंधेरा]
+  blur:
+    label: धुंधला दिखना
+    keywords: [dhundla, धुंधला, dhundhla]
+  pus:
+    label: मवाद
+    keywords: [mawad, मवाद, pus, पस]
+  discharge:
+    label: रिसाव
+    keywords: [chipchipa, चिपचिपा, ris raha, रिस रहा, risaav, रिसाव]
+  flashes:
+    label: चमक या धब्बे
+    keywords: [chamak, चमक, dhabbe, धब्बे, parda, पर्दा]
+  vomiting:
+    label: उल्टी
+    keywords: [ulti, उल्टी, ulty]
+  nausea:
+    label: जी मचलाना
+    keywords: [ji machla, जी मचल, matli, मतली]
+  bleeding:
+    label: खून आना
+    keywords: [khoon, खून, khun, thakka, थक्का, thakke, थक्के]
+  fever:
+    label: बुखार
+    keywords: [bukhar, बुखार, bukhaar, kapkapi, कंपकंपी]
+  swelling:
+    label: सूजन
+    keywords: [sujan, सूजन, soojan, sooj, सूज]
+  wound_problem:
+    label: टांके खुलना
+    body_part: wound
+    keywords: [tanke khul, टांके खुल, taanke khul, zakhm khul]
+  breathless:
+    label: साँस फूलना या सीने में दर्द
+    keywords: [saans phool, साँस फूल, सांस फूल, saans nahi, seene mein dard, सीने में दर्द]
+  itching:
+    label: खुजली
+    keywords: [khujli, खुजली, kujli, kirkiri, किरकिरी]
+  watering:
+    label: पानी आना
+    keywords: [paani aa, पानी आ, aansu, आँसू]
+  glare:
+    label: रोशनी चुभना
+    keywords: [chaundh, चौंध, roshni chubh, रोशनी चुभ]
+  constipation:
+    label: कब्ज़
+    keywords: [kabz, कब्ज़, kabj, कब्ज]
+
+negation_before: [bina, बिना]
+# "dard nahi hai" = no pain.
+negation_after: [nahi, nahin, नहीं, nai, na]
+negation_suffixes: []
+# "dard kam nahi ho raha" = pain not reducing: still escalate.
+negation_blockers: [kam, कम, ruk, रुक, band, बंद, theek, ठीक]
+clause_breakers: [lekin, लेकिन, par, पर, magar, मगर, aur, और]
+
+intensifiers: [bahut, बहुत, zyada, ज़्यादा, jyada, tez, तेज़, bohot]
+mild: [halka, हल्का, thoda, थोड़ा, thodi, थोड़ी]
+onset_words: [kal, कल, aaj, आज, subah, सुबह, raat, रात]
+duration_units: [din, दिन, ghante, घंटे, hafte, हफ़्ते]
+
+"yes": [haan, हाँ, han, ha, sahi, सही, ji, जी, theek, ठीक]
+"no": [nahi, नहीं, nahin, galat, गलत, na, ना]
+
+read_back: "आपने बताया: {items}। क्या यह सही है?"
+read_back_general: "आपकी बात आपके डॉक्टर को भेजी जाएगी। ठीक है?"
+joiner: और
+very: बहुत

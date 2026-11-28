@@ -15,7 +15,14 @@ from sqlalchemy.orm import Session
 
 from app.core import models as m
 from app.core.db import Base, Database
-from app.core.events import DEMO_RESET, DEMO_SEEDED, DomainEvent, EventBus
+from app.core.events import (
+    DEMO_DAY_ADVANCED,
+    DEMO_RESET,
+    DEMO_SEEDED,
+    REMINDER_DUE,
+    DomainEvent,
+    EventBus,
+)
 
 SEED_DIR = Path(__file__).resolve().parents[2] / "seed"
 SEED_NAMESPACE = uuid.UUID("6f1c2b7e-3d4a-4c1e-9b8a-0c5e7d2f1a90")
@@ -33,6 +40,7 @@ COUNTED_TABLES: dict[str, type[Base]] = {
     "reports": m.Report,
     "events": m.Event,
     "scheduled_jobs": m.ScheduledJob,
+    "access_tokens": m.AccessToken,
 }
 
 
@@ -67,6 +75,7 @@ def seed(session: Session, now: datetime | None = None, seed_dir: Path = SEED_DI
                 id=seed_id(h["key"]),
                 name=h["name"],
                 city=h["city"],
+                phone=h.get("phone"),
                 default_languages=h["default_languages"],
             )
         )
@@ -171,6 +180,12 @@ def _seed_discharge(
     discharge_id = seed_id(d["key"])
     discharged_on = now.date() - timedelta(days=d["discharged_days_ago"])
     approved_at = datetime.combine(discharged_on, time(11, 0), tzinfo=UTC)
+    # Approval always comes before the first message, whatever the time of day now is.
+    first_message = min(
+        (now - timedelta(minutes=msg["minutes_ago"]) for msg in d.get("messages", [])),
+        default=approved_at,
+    )
+    approved_at = min(approved_at, first_message - timedelta(minutes=1))
     template = templates[d["template"]]
     remedies_by_id = {ms["id"]: ms["remedy_en"] for ms in template["minor_symptoms"]}
 
@@ -276,3 +291,52 @@ def reset(db: Database, bus: EventBus) -> dict[str, int]:
         seed(session)
         bus.publish(session, DomainEvent(type=DEMO_RESET))
         return counts(session)
+
+
+# Episodes that are still running; "Simulate next day" moves only these.
+RUNNING = (
+    m.DischargeStatus.sent,
+    m.DischargeStatus.understood,
+    m.DischargeStatus.needs_followup,
+    m.DischargeStatus.alert,
+)
+
+
+def advance_day(session: Session, bus: EventBus, hospital_id: uuid.UUID) -> list[dict[str, Any]]:
+    """Demo "Simulate next day": every running episode is one day further into recovery.
+
+    Moves discharged_on back a day and publishes demo.day_advanced per episode; the reminders
+    module listens and sends that day's reminders. Returns one line per patient.
+    """
+    rows = session.execute(
+        select(m.Discharge, m.Patient)
+        .join(m.Patient, m.Patient.id == m.Discharge.patient_id)
+        .where(m.Discharge.hospital_id == hospital_id, m.Discharge.status.in_(RUNNING))
+        .order_by(m.Patient.name)
+    ).all()
+    today = datetime.now(UTC).date()
+    out = []
+    for discharge, patient in rows:
+        discharge.discharged_on = discharge.discharged_on - timedelta(days=1)
+        session.flush()
+        day = (today - discharge.discharged_on).days + 1
+        event = bus.publish(
+            session,
+            DomainEvent(
+                type=DEMO_DAY_ADVANCED,
+                hospital_id=hospital_id,
+                discharge_id=discharge.id,
+                payload={"recovery_day": day},
+            ),
+        )
+        sent = session.scalar(
+            select(func.count())
+            .select_from(m.Event)
+            .where(
+                m.Event.type == REMINDER_DUE,
+                m.Event.discharge_id == discharge.id,
+                m.Event.created_at >= event.created_at,
+            )
+        )
+        out.append({"patient_name": patient.name, "recovery_day": day, "reminders_sent": sent or 0})
+    return out

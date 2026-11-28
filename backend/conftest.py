@@ -30,3 +30,9 @@ def client(tmp_path: Path) -> Iterator[TestClient]:
     """A running app (lifespan executed, demo data seeded) on a temp database."""
     with TestClient(create_app(make_settings(tmp_path))) as test_client:
         yield test_client
+
+
+@pytest.fixture
+def anyio_backend() -> str:
+    """Run async tests (marked @pytest.mark.anyio) on asyncio only."""
+    return "asyncio"

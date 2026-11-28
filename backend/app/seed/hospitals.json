@@ -3,6 +3,12 @@
     "key": "hospital:demo",
     "name": "CareVoice Demo Hospital",
     "city": "Bengaluru",
-    "default_languages": ["en", "kn", "hi", "ta"]
+    "default_languages": [
+      "en",
+      "kn",
+      "hi",
+      "ta"
+    ],
+    "phone": "+91 90000 00000"
   }
 ]

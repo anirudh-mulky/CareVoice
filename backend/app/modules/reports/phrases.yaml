@@ -1,0 +1,17 @@
+# Report confirmation wording per language. Needs a native-speaker check before a pilot.
+en:
+  sent: "Thank you. Your doctor will see this. If you feel worse, call the hospital."
+  say_again: "Sorry. Please tell me again what is wrong."
+  unclear: "Please tap Yes or No."
+kn:
+  sent: "ಧನ್ಯವಾದ. ನಿಮ್ಮ ವೈದ್ಯರು ಇದನ್ನು ನೋಡುತ್ತಾರೆ. ಹೆಚ್ಚು ತೊಂದರೆಯಾದರೆ ಆಸ್ಪತ್ರೆಗೆ ಕರೆ ಮಾಡಿ."
+  say_again: "ಕ್ಷಮಿಸಿ. ಏನು ತೊಂದರೆ ಎಂದು ಮತ್ತೊಮ್ಮೆ ಹೇಳಿ."
+  unclear: "ದಯವಿಟ್ಟು ಹೌದು ಅಥವಾ ಇಲ್ಲ ಒತ್ತಿ."
+hi:
+  sent: "धन्यवाद। आपके डॉक्टर इसे देखेंगे। तबीयत ज़्यादा खराब लगे तो अस्पताल को फ़ोन करें।"
+  say_again: "माफ़ कीजिए। फिर से बताइए कि क्या तकलीफ़ है।"
+  unclear: "कृपया हाँ या नहीं दबाइए।"
+ta:
+  sent: "நன்றி. உங்கள் மருத்துவர் இதைப் பார்ப்பார். அதிகமாகத் தொந்தரவு இருந்தால் மருத்துவமனையை அழையுங்கள்."
+  say_again: "மன்னிக்கவும். என்ன பிரச்சனை என்று மீண்டும் சொல்லுங்கள்."
+  unclear: "தயவுசெய்து ஆம் அல்லது இல்லை என்பதை அழுத்துங்கள்."

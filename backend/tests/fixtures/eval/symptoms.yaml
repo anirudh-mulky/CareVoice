@@ -1,0 +1,66 @@
+# AI eval set for analyse_symptom + decision rules (spec: "Testing and QA").
+# Each case: the patient's words, their template, and the expected red flags, minor
+# symptoms and outcome. The gate: no red flag in this set is ever missed.
+# template: cataract | c-section (from app/seed/templates.json)
+
+kn:
+  - {id: kn-01, template: cataract, text: "Kannu tumba kempagide, novu ide", flags: [rf_redness, rf_eye_pain], type: alert}
+  - {id: kn-02, template: cataract, text: "ಕಣ್ಣು ತುಂಬಾ ಕೆಂಪಾಗಿದೆ, ನೋವು ಇದೆ", flags: [rf_redness, rf_eye_pain], type: alert}
+  - {id: kn-03, template: cataract, text: "novu illa, swalpa turike ide", minors: [ms_itching], type: minor, note: negation}
+  - {id: kn-04, template: cataract, text: "ನೋವು ಇಲ್ಲ, ಸ್ವಲ್ಪ ತುರಿಕೆ ಇದೆ", minors: [ms_itching], type: minor, note: negation}
+  - {id: kn-05, template: cataract, text: "kannu mabbu aagide, sariyagi kaanisuttilla", flags: [rf_vision_loss], type: alert}
+  - {id: kn-06, template: cataract, text: "kannininda keevu baruttide", flags: [rf_discharge], type: alert}
+  - {id: kn-07, template: cataract, text: "eye red aagide, pain ide", flags: [rf_redness, rf_eye_pain], type: alert, note: code-mixed}
+  - {id: kn-08, template: cataract, text: "kannalli neeru baruttide, bere enu illa", minors: [ms_watering], type: minor}
+  - {id: kn-09, template: cataract, text: "belaku chuchutte, kannu sari ide", minors: [ms_glare], type: minor}
+  - {id: kn-10, template: cataract, text: "vaanti aaytu, kannu novu", flags: [rf_vomiting, rf_eye_pain], type: alert}
+  - {id: kn-11, template: cataract, text: "kempu illa, novu illa", type: general, note: negation}
+  - {id: kn-12, template: cataract, text: "ಬೆಳಕಿನ ಮಿಂಚು ಕಾಣಿಸುತ್ತಿದೆ", flags: [rf_flashes], type: alert}
+  - {id: kn-13, template: cataract, text: "novu kadime aagilla", flags: [rf_eye_pain], type: alert, note: "'not reducing' is not a negation"}
+
+hi:
+  - {id: hi-01, template: c-section, text: "टांकों के पास बहुत खुजली हो रही है, और कुछ नहीं", minors: [ms_wound_itch], type: minor}
+  - {id: hi-02, template: c-section, text: "tanko mein khujli ho rahi hai", minors: [ms_wound_itch], type: minor}
+  - {id: hi-03, template: c-section, text: "wound se paani aa raha hai", flags: [rf_wound_infection], type: alert, note: code-mixed}
+  - {id: hi-04, template: c-section, text: "bahut khoon aa raha hai", flags: [rf_heavy_bleeding], type: alert}
+  - {id: hi-05, template: c-section, text: "kal raat se bukhar hai aur kapkapi", flags: [rf_fever], type: alert}
+  - {id: hi-06, template: c-section, text: "pet mein tez dard hai", flags: [rf_severe_pain], type: alert}
+  - {id: hi-07, template: c-section, text: "halka dard hai jab uthti hoon", minors: [ms_mild_soreness], type: minor}
+  - {id: hi-08, template: c-section, text: "dard nahi hai, bas kabz hai", minors: [ms_constipation], type: minor, note: negation}
+  - {id: hi-09, template: c-section, text: "pair mein sujan aur dard hai", flags: [rf_leg_swelling], type: alert}
+  - {id: hi-10, template: c-section, text: "saans phool rahi hai", flags: [rf_breathless], type: alert}
+  - {id: hi-11, template: cataract, text: "aankh laal hai aur dard ho raha hai", flags: [rf_redness, rf_eye_pain], type: alert}
+  - {id: hi-12, template: c-section, text: "koi dard nahi, sab theek hai", type: general, note: negation}
+  - {id: hi-13, template: c-section, text: "dard kam nahi ho raha", type: alert, note: "unplaced pain escalates as low confidence"}
+  - {id: hi-14, template: c-section, text: "stitches ke paas redness hai aur pus aa raha hai", flags: [rf_wound_infection], type: alert, note: code-mixed}
+
+ta:
+  - {id: ta-01, template: cataract, text: "கண் ரொம்ப சிவப்பா இருக்கு, வலிக்குது", flags: [rf_redness, rf_eye_pain], type: alert}
+  - {id: ta-02, template: cataract, text: "kan romba sivappa irukku, valikkuthu", flags: [rf_redness, rf_eye_pain], type: alert}
+  - {id: ta-03, template: cataract, text: "vali illa, konjam arippu irukku", minors: [ms_itching], type: minor, note: negation}
+  - {id: ta-04, template: cataract, text: "கண் தெரியல, மங்கலாக இருக்கு", flags: [rf_vision_loss], type: alert}
+  - {id: ta-05, template: cataract, text: "kannula irundhu seel varuthu", flags: [rf_discharge], type: alert}
+  - {id: ta-06, template: cataract, text: "kannula thanneer varuthu, vera onnum illa", minors: [ms_watering], type: minor}
+  - {id: ta-07, template: cataract, text: "vaanthi varuthu, kan vali", flags: [rf_vomiting, rf_eye_pain], type: alert}
+  - {id: ta-08, template: cataract, text: "velicham partha koosuthu", minors: [ms_glare], type: minor}
+  - {id: ta-09, template: cataract, text: "minnal madhiri theriyuthu", flags: [rf_flashes], type: alert}
+  - {id: ta-10, template: cataract, text: "eye pain irukku, red-a irukku", flags: [rf_eye_pain, rf_redness], type: alert, note: code-mixed}
+  - {id: ta-11, template: cataract, text: "sivappu illa, vali illa", type: general, note: negation}
+  - {id: ta-12, template: cataract, text: "valikkala, aana konjam arippu", minors: [ms_itching], type: minor, note: fused negation}
+  - {id: ta-13, template: cataract, text: "vali koraiyala", flags: [rf_eye_pain], type: alert, note: "'not reducing' is not a negation"}
+
+en:
+  - {id: en-01, template: cataract, text: "My eye is very red and it hurts", flags: [rf_redness, rf_eye_pain], type: alert}
+  - {id: en-02, template: cataract, text: "I can't see properly from the operated eye", flags: [rf_vision_loss], type: alert}
+  - {id: en-03, template: cataract, text: "There is some yellow pus coming from the eye", flags: [rf_discharge], type: alert}
+  - {id: en-04, template: cataract, text: "Mild itching, no pain", minors: [ms_itching], type: minor, note: negation}
+  - {id: en-05, template: cataract, text: "My eye keeps watering, nothing else", minors: [ms_watering], type: minor}
+  - {id: en-06, template: cataract, text: "I see flashes of light and floaters", flags: [rf_flashes], type: alert}
+  - {id: en-07, template: c-section, text: "I have a high fever and chills", flags: [rf_fever], type: alert}
+  - {id: en-08, template: c-section, text: "The wound is leaking and smells bad", flags: [rf_wound_infection], type: alert}
+  - {id: en-09, template: c-section, text: "Bleeding is heavy, soaking a pad every hour", flags: [rf_heavy_bleeding], type: alert}
+  - {id: en-10, template: c-section, text: "No fever, no bleeding, just constipation", minors: [ms_constipation], type: minor, note: negation}
+  - {id: en-11, template: c-section, text: "My leg is swollen and painful", flags: [rf_leg_swelling], type: alert}
+  - {id: en-12, template: c-section, text: "I'm short of breath and have chest pain", flags: [rf_breathless], type: alert}
+  - {id: en-13, template: c-section, text: "Can I take a bath?", type: general}
+  - {id: en-14, template: cataract, text: "Not much pain but the eye is red", flags: [rf_eye_pain, rf_redness], type: alert, note: "'not much' is not a negation"}

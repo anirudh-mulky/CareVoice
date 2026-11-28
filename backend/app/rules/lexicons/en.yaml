@@ -1,0 +1,110 @@
+# English lexicon. Also holds the language-independent concept metadata (body_part).
+# Matching: English words match whole words plus simple endings (s, ing, ed, ness, y, ful, ly).
+language: en
+label: English
+names: [english, angrezi]
+
+concepts:
+  pain:
+    label: pain
+    keywords: [pain, painful, hurts, hurting, ache, aching]
+  redness:
+    label: redness
+    body_part: eye
+    keywords: [red, redness, bloodshot]
+  vision_loss:
+    label: loss of vision
+    body_part: eye
+    keywords: ["can't see", "cannot see", "can not see", vision loss, loss of vision, lost vision,
+               vision gone, vision goes, no vision, blind, everything dark]
+  blur:
+    label: blurred vision
+    body_part: eye
+    keywords: [blur, blurry, blurred, hazy, foggy]
+  pus:
+    label: pus
+    keywords: [pus]
+  discharge:
+    label: discharge or leaking
+    keywords: [discharge, sticky, oozing, leaking, gooey]
+  flashes:
+    label: flashes or floaters
+    body_part: eye
+    keywords: [flashes, flashing, floaters, curtain, black spots]
+  vomiting:
+    label: vomiting
+    keywords: [vomit, vomiting, throwing up, threw up]
+  nausea:
+    label: nausea
+    keywords: [nausea, nauseous, queasy]
+  bleeding:
+    label: bleeding
+    keywords: [bleeding, bleed, blood, clots, soaking]
+  fever:
+    label: fever
+    keywords: [fever, feverish, temperature, chills, shivering]
+  swelling:
+    label: swelling
+    keywords: [swelling, swollen, swell]
+  wound_problem:
+    label: wound opening
+    body_part: wound
+    keywords: [wound open, wound opened, stitches open, stitches came, gaping]
+  breathless:
+    label: breathlessness or chest pain
+    body_part: chest
+    keywords: [breathless, short of breath, "can't breathe", cannot breathe, breathing difficulty,
+               chest pain]
+  itching:
+    label: itching
+    keywords: [itch, itching, itchy, gritty, sandy]
+  watering:
+    label: watering
+    body_part: eye
+    keywords: [watering, watery, tears, water coming]
+  glare:
+    label: glare
+    body_part: eye
+    keywords: [glare, bright light, light hurts, dazzle]
+  constipation:
+    label: constipation
+    keywords: [constipation, constipated, no motion, not passing stool]
+
+# "no pain", "not red". Checked in the 2 words before a symptom.
+negation_before: ["no", not, never, without, dont, doesnt, didnt, isnt, arent, havent, hasnt, nothing, none]
+negation_after: []
+negation_suffixes: []
+# Words that cancel a nearby negation, so "not much pain" or "can't stop the bleeding" still escalate.
+negation_blockers: [much, stop, stopping, reduce, reducing, better, less]
+# Contrast words start a new clause: "no pain but red eye".
+clause_breakers: [but, however, though]
+
+intensifiers: [very, severe, severely, lot, extremely, really, unbearable, worse, worsening, increasing, heavy, high]
+mild: [mild, slight, slightly, little, bit]
+onset_words: [yesterday, today, morning, night, evening]
+duration_units: [day, days, hour, hours, week, weeks]
+
+"yes": ["yes", yeah, yep, correct, right, sure, ok, okay]
+"no": ["no", nope, wrong, incorrect, not right]
+
+read_back: "You said: {items}. Is that right?"
+read_back_general: "I will send what you said to your doctor. Is that right?"
+joiner: and
+very: severe
+
+# Spoken ways to name a template, keyed by template condition.
+template_aliases:
+  cataract: [cataract, cataract surgery, phaco, phacoemulsification]
+  caesarean section: [c section, csection, c-section, caesarean, cesarean, caesarian, lscs, sizerian]
+
+# Discharge dictation vocabulary (rule-based extractor).
+sides:
+  right: [right, re, right eye, right side]
+  left: [left, le, left eye, left side]
+  both: [both, both eyes, bilateral]
+filler: [standard template, usual template, default template, standard, usual, template, eye, eyes,
+         years, year, yrs, old, language, in, patient, name, age, and]
+medicine_words: [drop, drops, tablet, tablets, tab, tabs, capsule, capsules, cap, syrup, mg, ml, mcg,
+                 injection, ointment, gel, insulin, units, puff, puffs, inhaler]
+frequency_words: [once, twice, thrice, daily, every, times, bd, bid, tds, tid, qid, od, hs, night,
+                  morning, evening, hourly, "per day", "a day", weekly, nightly]

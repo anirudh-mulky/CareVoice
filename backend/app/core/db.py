@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from fastapi import Request
-from sqlalchemy import Engine, MetaData, create_engine, event
+from sqlalchemy import Engine, MetaData, create_engine, event, inspect
 from sqlalchemy.engine import make_url
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
@@ -51,6 +51,28 @@ class Database:
         from app.core import models  # noqa: F401  (registers every table on Base.metadata)
 
         Base.metadata.create_all(self.engine)
+
+    def schema_drift(self) -> list[str]:
+        """Tables or columns the models expect but the database lacks (no migrations yet)."""
+        from app.core import models  # noqa: F401
+
+        insp = inspect(self.engine)
+        existing = set(insp.get_table_names())
+        if not existing:
+            return []  # fresh database
+        drift: list[str] = []
+        for table in Base.metadata.sorted_tables:
+            if table.name not in existing:
+                drift.append(table.name)
+                continue
+            have = {c["name"]: c for c in insp.get_columns(table.name)}
+            for column in table.columns:
+                found = have.get(column.name)
+                if found is None:
+                    drift.append(f"{table.name}.{column.name}")
+                elif not column.primary_key and bool(found["nullable"]) != bool(column.nullable):
+                    drift.append(f"{table.name}.{column.name} (nullable)")
+        return drift
 
     def drop_all(self) -> None:
         from app.core import models  # noqa: F401

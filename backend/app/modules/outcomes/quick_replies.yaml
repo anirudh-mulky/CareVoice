@@ -1,0 +1,27 @@
+# Doctor's quick replies, pre-translated so they reach the patient in their language even
+# in demo mode (the demo translator never invents a translation). Native-speaker check needed.
+- id: visit_today
+  en: "Please come to the hospital today."
+  kn: "ದಯವಿಟ್ಟು ಇಂದೇ ಆಸ್ಪತ್ರೆಗೆ ಬನ್ನಿ."
+  hi: "कृपया आज ही अस्पताल आएँ।"
+  ta: "தயவுசெய்து இன்றே மருத்துவமனைக்கு வாருங்கள்."
+- id: will_call
+  en: "I will call you in the next hour."
+  kn: "ಮುಂದಿನ ಒಂದು ಗಂಟೆಯಲ್ಲಿ ನಾನು ನಿಮಗೆ ಕರೆ ಮಾಡುತ್ತೇನೆ."
+  hi: "अगले एक घंटे में आपको फ़ोन किया जाएगा।"
+  ta: "அடுத்த ஒரு மணி நேரத்தில் நான் உங்களை அழைக்கிறேன்."
+- id: continue_medicines
+  en: "Continue your medicines as written on your care card."
+  kn: "ನಿಮ್ಮ ಆರೈಕೆ ಕಾರ್ಡ್‌ನಲ್ಲಿ ಬರೆದಂತೆ ಔಷಧಿಗಳನ್ನು ಮುಂದುವರಿಸಿ."
+  hi: "अपनी दवाइयाँ देखभाल कार्ड में लिखे अनुसार लेते रहें।"
+  ta: "உங்கள் பராமரிப்பு அட்டையில் எழுதியபடி மருந்துகளைத் தொடருங்கள்."
+- id: come_on_follow_up
+  en: "Please come for your check-up on the day written on your care card."
+  kn: "ನಿಮ್ಮ ಆರೈಕೆ ಕಾರ್ಡ್‌ನಲ್ಲಿ ಬರೆದ ದಿನ ತಪಾಸಣೆಗೆ ಬನ್ನಿ."
+  hi: "देखभाल कार्ड में लिखे दिन जाँच के लिए आइए।"
+  ta: "உங்கள் பராமரிப்பு அட்டையில் எழுதிய நாளில் பரிசோதனைக்கு வாருங்கள்."
+- id: tell_me_more
+  en: "Thank you for telling me. Please tell me if it gets worse."
+  kn: "ಹೇಳಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದ. ಹೆಚ್ಚಾದರೆ ದಯವಿಟ್ಟು ತಿಳಿಸಿ."
+  hi: "बताने के लिए धन्यवाद। तकलीफ़ बढ़े तो ज़रूर बताइए।"
+  ta: "சொன்னதற்கு நன்றி. அதிகமானால் தயவுசெய்து சொல்லுங்கள்."

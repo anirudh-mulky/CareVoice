@@ -1,0 +1,38 @@
+# Wording around the care card, per language. The medical content itself comes from the
+# doctor's template and its verified translation. Needs native-speaker review.
+en:
+  greeting: "{name}, here is your care card after your {template}."
+  red_flags_title: "If any of these happen, come to the hospital today"
+  medicines: "Your medicines"
+  do: "Please do this"
+  dont: "Please do not"
+  extras: "Your doctor also said"
+  follow_up: "Come for your check-up on day {day}."
+  full_stop: "."
+kn:
+  greeting: "{name}, ನಿಮ್ಮ {template} ನಂತರದ ಆರೈಕೆ ಮಾಹಿತಿ ಇಲ್ಲಿದೆ."
+  red_flags_title: "ಇವುಗಳಲ್ಲಿ ಯಾವುದಾದರೂ ಆದರೆ ಇಂದೇ ಆಸ್ಪತ್ರೆಗೆ ಬನ್ನಿ"
+  medicines: "ನಿಮ್ಮ ಔಷಧಿಗಳು"
+  do: "ಹೀಗೆ ಮಾಡಿ"
+  dont: "ಹೀಗೆ ಮಾಡಬೇಡಿ"
+  extras: "ನಿಮ್ಮ ವೈದ್ಯರು ಇದನ್ನೂ ಹೇಳಿದ್ದಾರೆ"
+  follow_up: "{day}ನೇ ದಿನ ತಪಾಸಣೆಗೆ ಬನ್ನಿ."
+  full_stop: "."
+hi:
+  greeting: "{name}, आपके {template} के बाद की देखभाल की जानकारी यह है।"
+  red_flags_title: "इनमें से कुछ भी हो तो आज ही अस्पताल आएँ"
+  medicines: "आपकी दवाइयाँ"
+  do: "यह करें"
+  dont: "यह न करें"
+  extras: "आपके डॉक्टर ने यह भी कहा"
+  follow_up: "{day}वें दिन जाँच के लिए आएँ।"
+  full_stop: "।"
+ta:
+  greeting: "{name}, உங்கள் {template}க்குப் பிறகான பராமரிப்புத் தகவல் இதோ."
+  red_flags_title: "இவற்றில் ஏதாவது இருந்தால் இன்றே மருத்துவமனைக்கு வாருங்கள்"
+  medicines: "உங்கள் மருந்துகள்"
+  do: "இதைச் செய்யுங்கள்"
+  dont: "இதைச் செய்ய வேண்டாம்"
+  extras: "உங்கள் மருத்துவர் இதையும் சொன்னார்"
+  follow_up: "{day}வது நாள் பரிசோதனைக்கு வாருங்கள்."
+  full_stop: "."

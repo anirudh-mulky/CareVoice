@@ -7,8 +7,8 @@ Modules not built yet are skipped with a log line, never a crash.
 
 import importlib
 import logging
-from collections.abc import Callable
-from typing import Protocol, cast
+from collections.abc import Callable, Coroutine
+from typing import Any, Protocol, cast
 
 from fastapi import FastAPI
 
@@ -18,6 +18,8 @@ from app.core.events import EventBus
 logger = logging.getLogger("carevoice.modules")
 
 StartupHook = Callable[[Database, EventBus], object]
+# Long-running loop started after startup and cancelled at shutdown (e.g. the reminder tick).
+BackgroundLoop = Callable[[], Coroutine[Any, Any, None]]
 
 
 class FeatureModule(Protocol):
@@ -27,6 +29,11 @@ class FeatureModule(Protocol):
 def on_startup(app: FastAPI, hook: StartupHook) -> None:
     """Run hook(db, bus) once tables exist, during app startup (e.g. seeding)."""
     app.state.startup_hooks.append(hook)
+
+
+def in_background(app: FastAPI, loop: BackgroundLoop) -> None:
+    """Run loop() as a task for the app's lifetime."""
+    app.state.background_loops.append(loop)
 
 
 def load_modules(app: FastAPI, bus: EventBus, names: list[str]) -> list[str]:
